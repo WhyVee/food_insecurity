@@ -37,6 +37,9 @@ HRFS12M1
 3     2859  
 -9      195  
 Name: HRFS12M1, dtype: int64  
+Food Security Determined by Rasch Model
+From Wikipedia:
+The Rasch model, named after Georg Rasch, is a psychometric model for analyzing categorical data, such as answers to questions on a reading assessment or questionnaire responses, as a function of the trade-off between (a) the respondent's abilities, attitudes, or personality traits and (b) the item difficulty.
 
 ### 2. Exploratory Data Analysis 
 
@@ -51,3 +54,7 @@ Name: HRFS12M1, dtype: int64
 Data Source(s):
 US Census Bureau
 https://www.census.gov/data/datasets/2019/demo/cps/cps-food-security.html
+
+Other Source(s):
+Wikipedia - Rasch Model
+https://en.wikipedia.org/wiki/Rasch_model
