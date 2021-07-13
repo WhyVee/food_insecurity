@@ -44,6 +44,7 @@ The Rasch model, named after Georg Rasch, is a psychometric model for analyzing 
 ### 2. Exploratory Data Analysis 
 
 ### 3. Model and Error Metric Selection
+Recall to minimize False Negatives or, alternatively, find all of the positive samples (in this case, positive is a food insecure individual)
 
 ### 4. Model Training
 
