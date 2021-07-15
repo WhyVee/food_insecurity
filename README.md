@@ -44,7 +44,11 @@ The Rasch model, named after Georg Rasch, is a psychometric model for analyzing 
 ### 2. Exploratory Data Analysis 
 
 ### 3. Model and Error Metric Selection
-Recall to minimize False Negatives or, alternatively, find all of the positive samples (in this case, positive is a food insecure individual)
+Recall to minimize False Negatives or, alternatively, find all of the positive samples (in this case, positive is a food insecure individual)  
+Confusion matrix with cost matrix to find the lowest "cost"
+Initial Model Testing  
+Random Forest recall: 0.6673631946155447, cost: 2156.0  
+Multi-Layer Perceptron recall: 0.7969173781324035, cost: 1493.2  
 
 ### 4. Model Training
 
@@ -57,5 +61,7 @@ US Census Bureau
 https://www.census.gov/data/datasets/2019/demo/cps/cps-food-security.html
 
 Other Source(s):
+Food Security Technical Documentation
+https://www2.census.gov/programs-surveys/cps/techdocs/cpsdec19.pdf
 Wikipedia - Rasch Model
 https://en.wikipedia.org/wiki/Rasch_model
