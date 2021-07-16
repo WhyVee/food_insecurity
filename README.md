@@ -45,6 +45,7 @@ People that are in need of help come in all shapes, sizes, and situations. Tryin
 
 ### 3. Model and Error Metric Selection
 Before creating my first model, the first step is to decide how to judge if the model is doing a good job. I chose to use recall as I want to minimize False Negatives or, alternatively, find all of the positive samples (in this case, positive is a food insecure individual). Since the model could obtain a high recall score at the expense of other metrics (such as precision), I created a cost matrix that heavily penalized False Negatives, but also penalized False Positives. I can multiply the calculated confusion matrix by the cost matrix and find the sum to determine a model's "cost". Minimizing the cost should give us our ideal model.  
+<img src="img/cost_matrix.png" width="500" height="500">  
 The next step was One Hot Encoding. Every column in the dataset was a representation of yes/no/no type of response or an integer representing a job code, for instance. Each of these would need to be encoded, and I used Pandas get_dummies to get the job done.  
 For initial testing, I tried to use 3 different models to see which would have the best baseline to then tune its hyperparameters. The 3 models were MLP Classifier, Random Forest Classifier, and Gradient Boosting Classifier. During the first test, it became apparent that there was still data-leakage, so I had to return to the data pipeline to remove those. After that was completed, I decided to use the Random Forest to create a model testing pipeline. 
 
@@ -53,12 +54,17 @@ Random Forest Recall: 0.667, Cost: 2156.0
 The cost is arbitrary and will only be useful as a comparison.
 
 ### 4. Model Training
+For model training, I used the training and validation set of data that was pulled from the cleaned dataset (the train-test-split was stratified as the data is imbalanced). In addition to the Random Forest, I also trained a Multi-Layer Perceptron as well as a Gradient Boosted Classifier. The results are as follows:  
+Multi-Layer Perceptron recall: 0.7969173781324035, cost: 1493.2  
+GradientBoostingClassifier() recall: 0.7100260453280495, cost: 1990.6  
+Though both of these models were an improvement from the Random Forest, they also took significantly longer to train. To use a Grid Search to tune their hyperparameters would be prohibitively expensive with regards to time, so I decided to try to use a Grid Search with the Random Forest. Unfortunately, even though the Random Forest was quicker than the others, it was not fast enough. Due to time constraints, I decided to go with the best model I had, which was the MLP. The parameter I was able to tune was the threshold with predict_proba. Once this was complete, my model was ready for the final test.
 
 ### 5. Results and Conclusion
-Multi-Layer Perceptron recall: 0.7969173781324035, cost: 1493.2  
-GradientBoostingClassifier() recall: 0.7100260453280495, cost: 1990.6 
-### 6. Sources
+The MLP performed much better than I thought that it would:  
+<img src="img/final_conf.png" width="500" height="500">  
+The final recall score using the test set was 0.853, with an overall cost that was consistent with the training data. The goal moving forward would be to tune the hyperparameters for the MLP. As the model improves, I could reduce the number of survey questions that the model recieves, with the ultimate goal of eliminating the Supplemental Food Security Survey. Surveys can be a great tool, but must always be taken with a grain of salt. If I could build an accurate model using more generic census data, the model might be able to predict the national level of food insecurity. This is likely not an obtainable goal for the near future.
 
+### 6. Sources
 Data Source(s):
 US Census Bureau
 https://www.census.gov/data/datasets/2019/demo/cps/cps-food-security.html
